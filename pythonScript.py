@@ -5,16 +5,19 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
+import chromedriver_autoinstaller
 
 def run_parking_bot():
     options = Options()
-    options.add_argument('--headless')  
+    # options.add_argument('--headless')  
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
-    options.binary_location = "/usr/bin/chromium"
+    # options.binary_location = "/usr/bin/chromium"
 
-    service = Service("/usr/bin/chromedriver")
-    driver = webdriver.Chrome(service=service, options=options)
+    # service = Service("/usr/bin/chromedriver")
+    driver = webdriver.Chrome(options=options)
+
+    chromedriver_autoinstaller.install()
 
     try:
         driver.get('https://www.register2park.com/register')
@@ -55,3 +58,5 @@ def run_parking_bot():
 
     finally:
         driver.quit()
+if __name__ == "__main__":
+    run_parking_bot()

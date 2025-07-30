@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -o errexit
 
+pip install -r requirements.txt
+
 STORAGE_DIR=/opt/render/project/.render
 
 if [[ ! -d $STORAGE_DIR/chrome ]]; then

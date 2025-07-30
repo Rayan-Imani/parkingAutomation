@@ -9,6 +9,9 @@ import chromedriver_autoinstaller
 import tempfile
 
 def run_parking_bot():
+    chromedriver_autoinstaller.install()
+
+
     options = Options()
     options.add_argument('--headless')  
     options.add_argument('--no-sandbox')
@@ -19,7 +22,6 @@ def run_parking_bot():
     # service = Service("/usr/bin/chromedriver")
     driver = webdriver.Chrome(options=options)
 
-    chromedriver_autoinstaller.install()
 
     try:
         driver.get('https://www.register2park.com/register')

@@ -5,22 +5,18 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
-import chromedriver_autoinstaller
-import tempfile
 
 def run_parking_bot():
-    chromedriver_autoinstaller.install()
 
 
     options = Options()
+    options.binary_location = "/opt/render/project/.render/chrome/opt/google/chrome/google-chrome"
     options.add_argument('--headless')  
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
-    # options.binary_location = "/usr/bin/chromium"
-    options.add_argument(f'--user-data-dir={tempfile.mkdtemp()}')
 
-    # service = Service("/usr/bin/chromedriver")
-    driver = webdriver.Chrome(options=options)
+    service = Service("/usr/bin/chromedriver")
+    driver = webdriver.Chrome(service=service, options=options)
 
 
     try:
@@ -62,5 +58,3 @@ def run_parking_bot():
 
     finally:
         driver.quit()
-if __name__ == "__main__":
-    run_parking_bot()

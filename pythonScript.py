@@ -7,6 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import time
 
 def run_parking_bot():
+    print("Bot logic started running!")
 
 
     options = Options()
@@ -20,7 +21,9 @@ def run_parking_bot():
 
 
     try:
+        print("🔍 Launching Chrome...")
         driver.get('https://www.register2park.com/register')
+        print("🔍 Launching Chrome...")
         time.sleep(2)
 
         driver.find_element(By.ID, 'propertyName').send_keys('inkwell')
@@ -51,6 +54,8 @@ def run_parking_bot():
         driver.find_element(By.ID, 'emailConfirmationEmailView').send_keys('rayanimani@gmail.com')
         driver.find_element(By.ID, 'email-confirmation-send-view').click()
         time.sleep(5)
+    except Exception as e:
+        print(f"Error occurred: {e}")
 
 
 

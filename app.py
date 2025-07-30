@@ -6,8 +6,10 @@ app = Flask(__name__)
 
 @app.route('/run', methods=['POST'])
 def trigger_bot():
+    print("/run endpoint hit")
     threading.Thread(target=run_parking_bot).start()
-    return "✅ Parking bot started", 200
+    print("Bot thread started")
+    return "Parking bot finished? maybe", 200
 
 @app.route('/')
 def health_check():

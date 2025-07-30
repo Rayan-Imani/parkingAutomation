@@ -16,3 +16,4 @@ if [[ ! -d $STORAGE_DIR/chrome ]]; then
 else
   echo "...Using Chrome from cache"
 fi
+$STORAGE_DIR/chrome/opt/google/chrome/google-chrome --version

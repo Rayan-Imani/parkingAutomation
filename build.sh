@@ -16,4 +16,18 @@ if [[ ! -d $STORAGE_DIR/chrome ]]; then
 else
   echo "...Using Chrome from cache"
 fi
+
+if [[ ! -f $STORAGE_DIR/chromedriver/chromedriver ]]; then
+  echo "...Downloading Chromedriver"
+  mkdir -p $STORAGE_DIR/chromedriver
+  cd $STORAGE_DIR/chromedriver
+  wget https://storage.googleapis.com/chrome-for-testing-public/138.0.7204.183/linux64/chromedriver-linux64.zip
+  unzip chromedriver-linux64.zip
+  mv chromedriver-linux64/chromedriver .
+  rm -r chromedriver-linux64 chromedriver-linux64.zip
+else
+  echo "...Using cached Chromedriver"
+fi
+
+cd $HOME/project/src
 $STORAGE_DIR/chrome/opt/google/chrome/google-chrome --version
